@@ -1,20 +1,36 @@
-import Search from './models/Search'
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
-// async function getResults(cityName) {
-//     // const url = `http://api.openweathermap.org`;
-//     // const key = 'cd1b10aadd030765dc1780c5585149f2';
-//     // const proxy = 'https://cors-anywhere.herokuapp.com/';       
+// Global app state
+const state = {}
+
+const controlSearch = async () => {
+    // 1. Get a query from the view
+    const query = searchView.getInput();
+    console.log(query);
+
+    // 2. If there is a query, add object to global state
+    if (query) {
+        state.search = new Search(query);
+
+        // 3. Prepare UI for results
+
+        // 4. Search location
+        await state.search.getResults(); // don't forget to call the function
+
+        // 5. Render weather for location
+        console.log(state.search.result)
+    }
     
-//     try {
-//         const res = await axios(`http://api.openweathermap.org/data/2.5/weather?q=${cityName},uk&APPID=cd1b10aadd030765dc1780c5585149f2`)
-//         const result = res.data.main.temp
-//         console.log(result);
-//     } catch (error) {
-//         alert(error);
-//     }
-// };
-// getResults('London');
+};
 
-const search = new Search('London');
-console.log(search);
-search.getResults();
+// EVENT LISTENERS
+
+elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+// const search = new Search('Melbourne');
+// console.log(search);

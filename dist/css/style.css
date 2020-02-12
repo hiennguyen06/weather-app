@@ -21,4 +21,21 @@ body {
   background-color: #fff;
 }
 
+.container {
+  max-width: 100vw;
+  height: 100vh;
+  background-color: orangered;
+  display: flex;
+}
+
+.left {
+  background-color: grey;
+  flex: 0 0 60%;
+}
+
+.right {
+  background-color: white;
+  flex-grow: 1;
+}
+
 /*# sourceMappingURL=style.css.map */
