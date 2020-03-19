@@ -20,7 +20,8 @@ const controlSearch = async () => {
         await state.search.getResults(); // don't forget to call the function
 
         // 5. Render weather for location
-        console.log(state.search.result)
+        // console.log(state.search.result);
+        searchView.renderLocation(state.search);
     }
     
 };
