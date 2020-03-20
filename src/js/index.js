@@ -15,6 +15,8 @@ const controlSearch = async () => {
         state.search = new Search(query);
 
         // 3. Prepare UI for results
+        searchView.clearInput();
+        searchView.clearSearch();
 
         // 4. Search location
         await state.search.getResults(); // don't forget to call the function

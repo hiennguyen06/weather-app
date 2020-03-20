@@ -11,7 +11,7 @@ export default class Search {
         // const proxy = 'https://cors-anywhere.herokuapp.com/';       
         
         try {
-            const res = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.query}&APPID=cd1b10aadd030765dc1780c5585149f2`);
+            const res = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.query}&APPID=cd1b10aadd030765dc1780c5585149f2&units=metric`);
             this.result = res.data
             console.log(this.result);
         } catch (error) {
